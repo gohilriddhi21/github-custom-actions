@@ -19,4 +19,4 @@ runs:
   env:
     SSH_KEY: ${{ inputs.ssh-key }}
     BITBUCKET_REPO : ${{ inputs.bitbucket-repo }}
-    REPO_GITHUB_URL : ${{ inputs.repo-github }}
+    REPO_GITHUB : ${{ inputs.repo-github }}
