@@ -1,11 +1,11 @@
 name: 'Action 2'
 description: 'Does Something.'
 inputs:
-  var-1:
+  weather-api-key:
     description: 'Some variable.'
     default: ''
     required: true
-  var-2:
+  var-1:
     description: 'Some other variable.'
     default: ''
     required: true
@@ -13,5 +13,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
+    WEATHER_API_KEY: ${{ inputs.weather-api-key }}
     VAR_1: ${{ inputs.var-1}}
-    VAR_2: ${{ inputs.var-2 }}
