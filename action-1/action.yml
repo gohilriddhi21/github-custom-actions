@@ -1,0 +1,17 @@
+name: 'Action 1'
+description: 'Does Something.'
+inputs:
+  var-1:
+    description: 'Some variable.'
+    default: ''
+    required: true
+  var-2:
+    description: 'Some other variable.'
+    default: ''
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    VAR_1: ${{ inputs.var-1}}
+    VAR_2: ${{ inputs.var-2 }}
