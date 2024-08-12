@@ -5,8 +5,8 @@ RUN apt-get update \
     && apt-get clean
 
 COPY requirements.txt /requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install -r /requirements.txt
 
 COPY entrypoint.py /entrypoint.py
 
-ENTRYPOINT ["python","entrypoint.py"]
+ENTRYPOINT ["python","/entrypoint.py"]
