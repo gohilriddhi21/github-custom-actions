@@ -25,8 +25,8 @@ def run_command(command, check=True):
 
 def get_pull_request_diff(pr_number):
   """Fetches the Git diff for a given pull request number."""
-  command = f"git diff --unified=0 PR_NUMBER_START..PR_NUMBER_END"
-  result = run_command(command.replace("PR_NUMBER_START", str(pr_number)).replace("PR_NUMBER_END", str(pr_number)), check=False)
+  command = "git diff main"
+  result = run_command(command)
   return result
 
 
