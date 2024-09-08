@@ -1,7 +1,7 @@
 name: 'Basic Custom Action'
 description: 'This is basic Custom workflow file that executes a Python script.'
 inputs:
-  var-1:
+  message:
     description: 'Dummy environment variable.'
     default: ''
     required: true
@@ -9,4 +9,4 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
-    VAR_1: ${{ inputs.var-1 }}
+    VAR_1: ${{ inputs.message }}

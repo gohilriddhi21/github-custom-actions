@@ -1,6 +1,8 @@
 import os
 
-print("Exceuted Basic Custom Action")
-VAR_1 = os.environ.get("VAR_1")
+def main():
+    message = os.getenv("MY_MESSAGE")
+    print(message)
 
-print(f"VAR_1: {VAR_1}")
+if __name__ == "__main__":
+    main()
