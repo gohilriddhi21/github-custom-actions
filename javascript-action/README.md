@@ -11,3 +11,5 @@ This action prints the metadata of the PR like, additions, deletions, and change
 - #### `pr_number`: 'The number of the pull request'
 - #### `token`: 'The token to use to access the GitHub API'
 
+## Reference 
+https://www.freecodecamp.org/news/build-your-first-javascript-github-action/
