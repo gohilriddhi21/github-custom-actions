@@ -1,17 +1,15 @@
-name: 'Action 1'
-description: 'Does Something.'
+name: 'PR Feedback'
+description: 'Takes Feedback from LLM reagrding the PR created.'
 inputs:
-  weather-api-key:
-    description: 'Some variable.'
-    default: ''
+  pr-title:
+    description: 'The title of the PR'
     required: true
-  var-1:
-    description: 'Some other variable.'
-    default: ''
+  issue-number:
+    description: 'The number of the issue'
     required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
-    WEATHER_API_KEY: ${{ inputs.weather-api-key }}
-    VAR_1: ${{ inputs.var-1}}
+    PR_TITLE: ${{ inputs.pr-title }}
+    ISSUE_NUMBER: ${{ inputs.issue-number }}
