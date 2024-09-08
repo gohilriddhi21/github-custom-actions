@@ -25,7 +25,7 @@ def run_command(command, check=True):
 
 def get_pull_request_diff(pr_number):
   """Fetches the Git diff for a given pull request number."""
-  command = "git status"
+  command = "git branch"
   result = run_command(command, check=False)
   return result
 
