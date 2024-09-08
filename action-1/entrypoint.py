@@ -42,6 +42,8 @@ def main():
     ISSUE_NUMBER = os.getenv("ISSUE_NUMBER")
     pr_number = ISSUE_NUMBER  
     diff = get_pull_request_diff(pr_number)
+    print("Diff"*10)
+    print(diff)
     feedback = send_diff_to_llm(diff)
     print(feedback)
 
