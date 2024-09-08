@@ -6,8 +6,8 @@ This action prints the metadata of the PR like, additions, deletions, and change
 
 **Required**
 
-#### `owner`: The owner of the GH repository
-#### `repo`:  'The name of the GH repository'
-#### `pr_number`: 'The number of the pull request'
-#### `token`: 'The token to use to access the GitHub API'
+- #### `owner`: The owner of the GH repository
+- #### `repo`:  'The name of the GH repository'
+- #### `pr_number`: 'The number of the pull request'
+- #### `token`: 'The token to use to access the GitHub API'
 
