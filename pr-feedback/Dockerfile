@@ -7,7 +7,7 @@ RUN apt-get update \
 COPY requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
-COPY vertexai_model.py /vertexai_model.py
+COPY genai_model.py /genai_model.py
 
 COPY entrypoint.py /entrypoint.py
 
