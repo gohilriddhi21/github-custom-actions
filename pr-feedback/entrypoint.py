@@ -46,8 +46,7 @@ def send_diff_to_llm(diff):
 def post_comment(feedback):
     try:
         github_token = os.environ.get("GIT_TOKEN")
-        user_agent = "gh-bot"  
-        auth = Auth.Token(github_token, user_agent=user_agent)
+        auth = Auth.Token(github_token)
         g = Github(auth=auth)
         logger.info("Connected to github.")
         
@@ -65,7 +64,7 @@ def post_comment(feedback):
 ## GenAI:
 {feedback}
         """
-        comment = issue.create_comment(comment_text)
+        comment = issue.create_comment(comment_text, )
         return comment
     except Exception as e:
         logger.error(f"An error occurred while posting comment. {e}")
