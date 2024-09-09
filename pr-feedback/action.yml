@@ -9,7 +9,7 @@ inputs:
     description: 'The location of the GCP Project.'
     default: ''
     required: true
-  google-application-credentials:
+  google-api-key:
     description: 'The path to the JSON file.'
     default: ''
     required: true
@@ -19,4 +19,4 @@ runs:
   env:
     PROJECT_ID: ${{ inputs.project-id}}
     LOCATION: ${{ inputs.location }}
-    GOOGLE_APPLICATION_CREDENTIALS: ${{ inputs.google-application-credentials }}
+    GOOGLE_API_KEY: ${{ inputs.google-api-key }}
