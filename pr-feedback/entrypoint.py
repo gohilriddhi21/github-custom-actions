@@ -76,7 +76,6 @@ def post_comment(feedback):
 def main():
   try:
     run_command("git config --global --add safe.directory /github/workspace")
-    logger.info("Configured git.")
     
     diff = get_pull_request_diff()
     logger.info(f"Git diff {diff}")
