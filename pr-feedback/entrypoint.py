@@ -46,9 +46,9 @@ def send_diff_to_llm(diff):
 def post_comment(feedback):
     try:
         github_token = os.environ.get("GIT_TOKEN")
-        auth = Auth.Token(github_token)
         user_agent = "gh-bot"  
-        g = Github(auth=auth, user_agent=user_agent)
+        auth = Auth.Token(github_token, user_agent=user_agent)
+        g = Github(auth=auth)
         logger.info("Connected to github.")
         
         repo_url = os.environ.get("REPO_URL")
