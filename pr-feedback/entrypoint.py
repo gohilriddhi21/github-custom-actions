@@ -81,6 +81,12 @@ def main():
     
     feedback = send_diff_to_llm(diff)
     print(feedback)
+    
+    comment = post_comment(feedback)
+    if comment:
+      logger.info("Comment posted successfully on the PR.")
+    else:
+      logger.error("Error posting a comment.")
   except Exception as e:
     logger.error(f"An error occurred: {str(e)}")
     sys.exit(1)
