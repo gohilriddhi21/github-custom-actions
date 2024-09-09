@@ -31,7 +31,7 @@ def get_pull_request_diff():
   """Fetches the Git diff for a given pull request number."""
   current_branch = run_command("git branch --show-current")
   print("\nCurrent Branch: ", current_branch)
-  command = "git diff"
+  command = "git diff origin/main"
   result = run_command(command)
   return result
 
