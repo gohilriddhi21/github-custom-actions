@@ -9,12 +9,8 @@ inputs:
     description: 'The location of the GCP Project.'
     default: ''
     required: true
-  google-api-key:
-    description: 'The API key.'
-    default: ''
-    required: true
-  google-application-credentials:
-    description: 'The service account key.'
+  ai-studio-api-key:
+    description: 'The API key for AI Studio.'
     default: ''
     required: true
 runs:
@@ -23,5 +19,4 @@ runs:
   env:
     PROJECT_ID: ${{ inputs.project-id}}
     LOCATION: ${{ inputs.location }}
-    GOOGLE_API_KEY: ${{ inputs.google-application-credentials }}
-    GOOGLE_APPLICATION_CREDENTIALS: ${{ inputs.google-application-credentials }}
+    AI_STUDIO_API_KEY: ${{ inputs.ai-studio-api-key }}

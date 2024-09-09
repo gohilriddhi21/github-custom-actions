@@ -1,8 +1,7 @@
-import os
 import sys
 import subprocess
 import logging
-from vertexai_model import VertexAIModel
+from genai_model import GenAIModel
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
@@ -35,11 +34,7 @@ def get_pull_request_diff():
 
       
 def send_diff_to_llm(diff):
-  PROJECT_ID = os.getenv("PROJECT_ID")
-  LOCATION = os.getenv("LOCATION")
-  print("PROJECT_ID: ", PROJECT_ID)
-  print("LOCATION: ", LOCATION)
-  client = VertexAIModel(project=PROJECT_ID, location=LOCATION)
+  client = GenAIModel()
   prompt = "Please provide feedback on the following code changes:\n" + diff
   feedback = client.generate_text(prompt=prompt)
   return feedback
