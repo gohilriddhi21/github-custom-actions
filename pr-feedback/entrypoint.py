@@ -33,11 +33,12 @@ def get_pull_request_diff():
   result = run_command(command)
   return result
 
-
       
 def send_diff_to_llm(diff):
   PROJECT_ID = os.getenv("PROJECT_ID")
   LOCATION = os.getenv("LOCATION")
+  print("PROJECT_ID: ", PROJECT_ID)
+  print("LOCATION: ", LOCATION)
   client = VertexAIModel(project=PROJECT_ID, location=LOCATION)
   prompt = "Please provide feedback on the following code changes:\n" + diff
   feedback = client.generate_text(prompt=prompt)
