@@ -9,9 +9,14 @@ inputs:
     description: 'The location of the GCP Project.'
     default: ''
     required: true
+  google-application-credentials:
+    description: 'The path to the JSON file.'
+    default: ''
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
     PROJECT_ID: ${{ inputs.project-id}}
     LOCATION: ${{ inputs.location }}
+    GOOGLE_APPLICATION_CREDENTIALS: ${{ inputs.google-application-credentials }}
