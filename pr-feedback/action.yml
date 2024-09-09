@@ -9,6 +9,18 @@ inputs:
     description: 'The location of the GCP Project.'
     default: ''
     required: true
+  git-token:
+    description: 'The token for the git to post comment.'
+    default: ''
+    required: true
+  repo-url:
+    description: 'The URL of the repository.'
+    default: ''
+    required: true
+  issue-number:
+    description: 'The issue number of the PR.'
+    default: ''
+    required: true
   ai-studio-api-key:
     description: 'The API key for AI Studio.'
     default: ''
@@ -19,4 +31,7 @@ runs:
   env:
     PROJECT_ID: ${{ inputs.project-id}}
     LOCATION: ${{ inputs.location }}
+    GIT_TOKEN: ${{ inputs.git-token }}
+    REPO_URL: ${{ inputs.repo-url }}
+    ISSUE_NUMBER: ${{ inputs.issue-number }}
     AI_STUDIO_API_KEY: ${{ inputs.ai-studio-api-key }}

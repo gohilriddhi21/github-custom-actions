@@ -1,6 +1,9 @@
+import os
 import sys
 import subprocess
 import logging
+from github import Github
+from github import Auth
 from genai_model import GenAIModel
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -38,6 +41,35 @@ def send_diff_to_llm(diff):
   prompt = "Please provide feedback on the following code changes:\n" + diff
   feedback = client.generate_text(prompt=prompt)
   return feedback
+
+
+def post_comment(feedback):
+    try:
+        github_token = os.environ.get("GIT_TOKEN")
+        auth = Auth.Token(github_token)
+        g = Github(auth=auth)
+        logger.info("Connected to github.")
+        
+        repo_url = os.environ.get("REPO_URL")
+        repo = g.get_repo(repo_url)
+        logger.info("Repo fetched.")
+        
+        issue_number = os.environ.get("ISSUE_NUMBER")
+        issue = repo.get_issue(number=int(issue_number))
+        logger.info("Issue fetched.")
+        
+        comment_text = f"""
+### Successfully generated Feedback!
+
+## GenAI:
+{feedback}
+        """
+        comment = issue.create_comment(comment_text)
+        return comment
+    except Exception as e:
+        logger.error(f"An error occurred while posting comment. {e}")
+        raise Exception(e)
+
 
 
 def main():
