@@ -3,9 +3,11 @@ description: 'Takes Feedback from LLM reagrding the PR created.'
 inputs:
   project-id:
     description: 'The id of the GCP Project.'
+    default: ''
     required: true
   location:
     description: 'The location of the GCP Project.'
+    default: ''
     required: true
 runs:
   using: 'docker'
