@@ -1,2 +1,3 @@
 vertexai
 PyGithub
+vertexai
