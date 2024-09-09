@@ -2,6 +2,7 @@ import os
 import sys
 import subprocess
 import logging
+from vertexai_model import VertexAIModel
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
@@ -33,22 +34,21 @@ def get_pull_request_diff():
   return result
 
 
+      
 def send_diff_to_llm(diff):
-    # TODO: Implement the API call to send the diff to the LLM model
-    # Placeholder for feedback generation until you implement the specific API call
-    feedback = "**Placeholder:** Feedback will be generated using the LLM model."
-    return feedback
+  PROJECT_ID = os.getenv("PROJECT_ID")
+  LOCATION = os.getenv("LOCATION")
+  client = VertexAIModel(project=PROJECT_ID, location=LOCATION)
+  prompt = "Please provide feedback on the following code changes:\n" + diff
+  feedback = client.generate_text(prompt=prompt)
+  return feedback
 
 
 def main():
   try:
     run_command("git config --global --add safe.directory /github/workspace")
     
-    # PR_TITLE = os.getenv("PR_TITLE")
-    # ISSUE_NUMBER = os.getenv("ISSUE_NUMBER")
-    
     diff = get_pull_request_diff()
-    print("\nDiff"*10)
     print(diff)
     
     feedback = send_diff_to_llm(diff)
