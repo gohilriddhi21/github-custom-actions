@@ -23,5 +23,5 @@ runs:
   env:
     PROJECT_ID: ${{ inputs.project-id}}
     LOCATION: ${{ inputs.location }}
-    GOOGLE_API_KEY: ${{ inputs.google-api-key }}
+    GOOGLE_API_KEY: ${{ inputs.google-application-credentials }}
     GOOGLE_APPLICATION_CREDENTIALS: ${{ inputs.google-application-credentials }}
