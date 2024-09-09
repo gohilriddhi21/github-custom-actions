@@ -11,6 +11,7 @@ class VertexAIModel:
     """Model Class to interact with the Vertex AI Model."""
     def __init__(
         self,
+        api_key='',
         project: str = "",
         location: str = "",
         model: str = "gemini-1.5-pro",
