@@ -79,7 +79,7 @@ def main():
     logger.info("Configured git.")
     
     diff = get_pull_request_diff()
-    logger.info(f"Git diff {diff}")
+    logger.info(f"Git diff: {diff}")
     
     feedback = send_diff_to_llm(diff)
     logger.info(feedback)
