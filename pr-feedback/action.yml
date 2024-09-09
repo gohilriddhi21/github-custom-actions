@@ -13,6 +13,10 @@ inputs:
     description: 'The API key.'
     default: ''
     required: true
+  google-application-credentials:
+    description: 'The service account key.'
+    default: ''
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -20,3 +24,4 @@ runs:
     PROJECT_ID: ${{ inputs.project-id}}
     LOCATION: ${{ inputs.location }}
     GOOGLE_API_KEY: ${{ inputs.google-api-key }}
+    GOOGLE_APPLICATION_CREDENTIALS: ${{ inputs.google-application-credentials }}
