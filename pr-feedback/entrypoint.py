@@ -59,10 +59,10 @@ def post_comment(feedback):
         logger.info("Issue fetched.")
         
         comment_text = f"""
-            ### Successfully generated Feedback!
+### Successfully generated Feedback!
 
-            ## GenAI:
-            {feedback}
+## GenAI:
+{feedback}
         """
         comment = issue.create_comment(comment_text, )
         return comment
