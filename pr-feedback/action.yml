@@ -1,14 +1,6 @@
 name: 'PR Feedback'
 description: 'Takes Feedback from LLM reagrding the PR created.'
 inputs:
-  project-id:
-    description: 'The id of the GCP Project.'
-    default: ''
-    required: true
-  location:
-    description: 'The location of the GCP Project.'
-    default: ''
-    required: true
   git-token:
     description: 'The token for the git to post comment.'
     default: ''
@@ -29,8 +21,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
-    PROJECT_ID: ${{ inputs.project-id}}
-    LOCATION: ${{ inputs.location }}
     GIT_TOKEN: ${{ inputs.git-token }}
     REPO_URL: ${{ inputs.repo-url }}
     ISSUE_NUMBER: ${{ inputs.issue-number }}

@@ -29,21 +29,23 @@ def run_command(command, check=True):
 
 def get_pull_request_diff():
   """Fetches the Git diff for a given pull request number."""
-  current_branch = run_command("git branch --show-current")
-  print("\nCurrent Branch: ", current_branch)
   command = "git diff origin/main"
   result = run_command(command)
   return result
 
       
 def send_diff_to_llm(diff):
+  """Generates feedback using the GenAI model."""
   client = GenAIModel()
+  logger.info("Configured GenAI Model.")
   prompt = "Please provide feedback on the following code changes:\n" + diff
   feedback = client.generate_text(prompt=prompt)
+  logger.info("Feedback generated.")
   return feedback
 
 
 def post_comment(feedback):
+    """Posts the generated feedback as a comment on the pull request."""
     try:
         github_token = os.environ.get("GIT_TOKEN")
         auth = Auth.Token(github_token)
@@ -64,23 +66,23 @@ def post_comment(feedback):
 ## GenAI:
 {feedback}
         """
-        comment = issue.create_comment(comment_text, )
+        comment = issue.create_comment(comment_text)
         return comment
     except Exception as e:
         logger.error(f"An error occurred while posting comment. {e}")
         raise Exception(e)
 
 
-
 def main():
   try:
     run_command("git config --global --add safe.directory /github/workspace")
+    logger.info("Configured git.")
     
     diff = get_pull_request_diff()
-    print(diff)
+    logger.info(f"Git diff {diff}")
     
     feedback = send_diff_to_llm(diff)
-    print(feedback)
+    logger.info(feedback)
     
     comment = post_comment(feedback)
     if comment:
@@ -93,4 +95,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+  main()
