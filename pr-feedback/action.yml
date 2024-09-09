@@ -10,6 +10,10 @@ inputs:
     default: ''
     required: true
   google-api-key:
+    description: 'The API key.'
+    default: ''
+    required: true
+  google-application-credentials:
     description: 'The path to the JSON file.'
     default: ''
     required: true
@@ -20,3 +24,4 @@ runs:
     PROJECT_ID: ${{ inputs.project-id}}
     LOCATION: ${{ inputs.location }}
     GOOGLE_API_KEY: ${{ inputs.google-api-key }}
+    GOOGLE_APPLICATION_CREDENTIALS: ${{ inputs.google-application-credentials }}
